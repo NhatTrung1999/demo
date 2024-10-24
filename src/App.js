@@ -13,17 +13,21 @@ function App() {
       "_blank"
     );
 
-    bpmWindow.onload = () => {
-      const txtAccount = "LYV31759";
+    // Sử dụng setTimeout để trì hoãn việc thiết lập giá trị
+    setTimeout(() => {
+      try {
+        const txtAccount = "LYV31759";
+        const txtFieldName = bpmWindow.document.getElementById("txtAccount");
 
-      const txtFieldName = bpmWindow.document.getElementById("txtAccount");
-
-      if (txtFieldName) {
-        txtFieldName.value = txtAccount;
-      } else {
-        console.error("Khong tim thay truong txtAccount");
+        if (txtFieldName) {
+          txtFieldName.value = txtAccount;
+        } else {
+          console.error("Không tìm thấy trường txtAccount");
+        }
+      } catch (error) {
+        console.error("Lỗi truy cập vào document của cửa sổ:", error);
       }
-    };
+    }, 3000); // Thay đổi thời gian trì hoãn nếu cần
   };
 
   return (
